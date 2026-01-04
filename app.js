@@ -1,21 +1,31 @@
 const tg = window.Telegram.WebApp;
 tg.expand();
 
-const uploadBtn = document.getElementById('uploadBtn');
-const fileInput = document.getElementById('fileInput');
+const docs = document.querySelectorAll('.doc');
 
-uploadBtn.addEventListener('click', () => {
-  fileInput.click();
-});
+docs.forEach(doc => {
+  const button = doc.querySelector('button');
+  const input = doc.querySelector('input');
+  const status = doc.querySelector('.doc-status');
+  const type = doc.dataset.type;
 
-fileInput.addEventListener('change', async () => {
-  const file = fileInput.files[0];
-  if (!file) return;
+  button.addEventListener('click', () => {
+    input.click();
+  });
 
-  tg.sendData(JSON.stringify({
-    type: 'file_selected',
-    name: file.name
-  }));
+  input.addEventListener('change', () => {
+    if (!input.files.length) return;
 
-  alert(`Файл выбран: ${file.name}\nОтправь его в чат боту`);
+    const file = input.files[0];
+
+    status.textContent = `Загружен: ${file.name}`;
+    status.classList.add('ok');
+    button.disabled = true;
+
+    tg.sendData(JSON.stringify({
+      type: 'document_selected',
+      docType: type,
+      fileName: file.name
+    }));
+  });
 });
