@@ -1,169 +1,27 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Safir</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
-  <style>
-    body {
-      margin: 0;
-      background: #f8fafc;
-      font-family: system-ui, sans-serif;
-      color: #0f172a;
-      padding: 16px;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    header h1 {
-      font-size: 22px;
-      margin: 0;
-      color: #2563eb;
-    }
-
-    header p {
-      font-size: 14px;
-      color: #475569;
-      margin-top: 8px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 14px;
-      padding: 14px;
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-
-    .info {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .title {
-      font-size: 15px;
-      font-weight: 500;
-    }
-
-    .desc {
-      font-size: 13px;
-      color: #64748b;
-      margin-top: 4px;
-    }
-
-    .status {
-      font-size: 13px;
-      margin-top: 6px;
-      color: #94a3b8;
-    }
-
-    .status.ok {
-      color: #16a34a;
-    }
-
-    button {
-      border: none;
-      border-radius: 10px;
-      padding: 10px 14px;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .upload {
-      background: #2563eb;
-      color: white;
-    }
-
-    .replace {
-      background: #16a34a;
-      color: white;
-    }
-
-    .footer {
-      margin-top: 24px;
-      text-align: center;
-    }
-
-    .progress {
-      font-size: 14px;
-      color: #475569;
-      margin-bottom: 12px;
-    }
-
-    .submit {
-      width: 100%;
-      padding: 14px;
-      font-size: 16px;
-      border-radius: 14px;
-      background: #cbd5e1;
-      color: #475569;
-      cursor: not-allowed;
-    }
-
-    .submit.active {
-      background: #16a34a;
-      color: white;
-      cursor: pointer;
-    }
-
-    input {
-      display: none;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <h1>Safir</h1>
-  <p>
-    Загрузите документы из больницы.  
-    Если чего-то нет сейчас, можно вернуться позже.
-  </p>
-</header>
+  <div class="container">
+    <h1>Safir</h1>
+    <p class="subtitle">Помощник паломника</p>
 
-<div class="card" data-type="invoice">
-  <div class="info">
-    <div class="title">Инвойс</div>
-    <div class="desc">Счёт за лечение из больницы</div>
-    <div class="status">Не загружен</div>
+    <button class="main-btn" onclick="goHelp()">
+      Первая помощь
+    </button>
+
+    <button class="main-btn secondary" onclick="goUpload()">
+      Загрузка документов
+    </button>
   </div>
-  <button class="upload">Загрузить</button>
-  <input type="file" />
-</div>
 
-<div class="card" data-type="medical">
-  <div class="info">
-    <div class="title">Медицинский рапорт</div>
-    <div class="desc">Заключение врача или выписка</div>
-    <div class="status">Не загружен</div>
-  </div>
-  <button class="upload">Загрузить</button>
-  <input type="file" />
-</div>
-
-<div class="card" data-type="receipt">
-  <div class="info">
-    <div class="title">Чек об оплате</div>
-    <div class="desc">Подтверждение оплаты лечения</div>
-    <div class="status">Не загружен</div>
-  </div>
-  <button class="upload">Загрузить</button>
-  <input type="file" />
-</div>
-
-<div class="footer">
-  <div class="progress">0 из 3 документов загружено</div>
-  <button class="submit">Отправить заявку</button>
-</div>
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
